@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     path("", views.home),
-    path("add_url/", views.add_url, name="add_url")
+    path("add_url/", views.add_url, name="add_url"),
+    path("short/<str:url>", views.url),
 ]
