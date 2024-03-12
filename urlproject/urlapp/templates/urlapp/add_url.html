@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>URL-Shortener</title>
+</head>
+<body>
+    <h1>Url Shortener</h1>
+    <form method="post" action="{% url 'add_url' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Url</button>
+        <a href="http://127.0.0.1:8000" class="btn">Home Page</a>
+    </form>
+</body>
+</html>
