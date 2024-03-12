@@ -5,8 +5,7 @@ import string
 
 def generate_short_url():
     chars = string.ascii_letters + string.digits
-    short = ''.join(random.choices(chars, k=6))
-    short_url = "short/" + short
+    short_url = ''.join(random.choices(chars, k=6))
     return short_url
 
 

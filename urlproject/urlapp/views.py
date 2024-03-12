@@ -6,6 +6,7 @@ from django.http import HttpResponse
 
 def home(request):
     urls = Url.objects.all()
+
     return render(request, 'urlapp/home.html', {"urls": urls})
 
 def add_url(request):
@@ -21,7 +22,6 @@ def add_url(request):
 
 
 def url(request, url):
-    url = "short/" + url
     short_urls = []
 
     for i in Url.objects.all():
@@ -33,3 +33,12 @@ def url(request, url):
         return render(request, 'urlapp/url.html', {"short_url": url, 'long_url': long_url})
     else:
         return render(request, 'urlapp/error.html')
+
+def delete(request, url):
+    url = Url.objects.get(short_url=url)
+    if request.method == 'POST':
+        url.delete()
+        return redirect("/")
+    else:
+        return render(request, 'urlapp/home.html')
+
