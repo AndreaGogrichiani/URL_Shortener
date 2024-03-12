@@ -13,7 +13,7 @@
     </style>
     <h1>Url List</h1>
     {% for url in urls %}
-        {{ url.short_url }} <a href="{% url 'dynamic_url' url.short_url %}" class="edit">stats</a>
+        {{ url.name }}: {{ url.short_url }} <a href="{% url 'dynamic_url' url.short_url %}" class="edit">stats</a>
         <form method="post" action="{% url 'delete_url' url.short_url%}">
             {% csrf_token %}
             <button type="submit">
