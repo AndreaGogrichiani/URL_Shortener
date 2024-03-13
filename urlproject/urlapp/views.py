@@ -30,7 +30,10 @@ def url(request, url):
     if url in short_urls:
         urla = Url.objects.get(short_url=url)
         long_url = urla.long_url
-        return render(request, 'urlapp/url.html', {"short_url": url, 'long_url': long_url})
+        url_name = urla.name
+        urla.click_count += 1
+        urla.save()
+        return render(request, 'urlapp/url.html', {"short_url": url, 'long_url': long_url, "url_name": url_name, "click_count": urla.click_count})
     else:
         return render(request, 'urlapp/error.html')
 

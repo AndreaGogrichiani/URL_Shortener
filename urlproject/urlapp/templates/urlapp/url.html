@@ -5,8 +5,10 @@
     <title>URL-Shortener</title>
 </head>
 <body>
-    <h1> {{ short_url }} </h1><br>
-    <h2> {{ long_url }} </h2><br>
+    <h1>{{ url_name }}</h1>
+    <a href="{{ long_url }}">short: {{ short_url }}</a><br>
+    <a href="{{ long_url }}">long: {{ long_url }}</a><br>
+    <h1>click count: {{ click_count }}</h1>
     <a href="http://127.0.0.1:8000" class="btn">Home Page</a>
 </body>
 </html>

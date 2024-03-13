@@ -13,3 +13,4 @@ class Url(models.Model):
     long_url = models.URLField(max_length=200)
     short_url = models.CharField(max_length=6, default=generate_short_url, unique=True)
     name = models.CharField(max_length=100)
+    click_count = models.PositiveIntegerField(default=0)
