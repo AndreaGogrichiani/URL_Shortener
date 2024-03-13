@@ -3,12 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>URL-Shortener</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        a {
+            display: block;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #333;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
     <h1>{{ url_name }}</h1>
-    <a href="{{ long_url }}">short: {{ short_url }}</a><br>
-    <a href="{{ long_url }}">long: {{ long_url }}</a><br>
-    <h1>click count: {{ click_count }}</h1>
+    <a href="{{ long_url }}">Short URL: {{ short_url }}</a>
+    <a href="{{ long_url }}">Long URL: {{ long_url }}</a>
+    <h1>Click Count: {{ click_count }}</h1>
     <a href="http://127.0.0.1:8000" class="btn">Home Page</a>
 </body>
 </html>

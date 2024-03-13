@@ -2,25 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>URL-Shortener</title>
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        .edit{
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .url {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            width: 100%;
+        }
+        .url h3 {
+            margin: 0;
+        }
+        .url .actions {
+            display: flex;
+            align-items: center;
+        }
+        .url .actions button {
+            margin-left: 5px;
+            padding: 5px 10px;
+            background-color: #d52424;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .add-url {
             text-decoration: none;
-            background-color: orange;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 16px;
         }
     </style>
-    <h1>Url List</h1>
-    {% for url in urls %}
-        {{ url.name }}: <a href=" {{ url.long_url }} ">{{ url.short_url }}</a> <a href="{% url 'dynamic_url' url.short_url %}" class="edit">stats</a>
-        <form method="post" action="{% url 'delete_url' url.short_url%}">
-            {% csrf_token %}
-            <button type="submit">
-                x
-            </button>
-        </form>
-    {% endfor %}
-    <a href="{% url 'add_url' %}" class="btn">Add Url</a>
+</head>
+<body>
+    <div class="container">
+        <h1>URL Shortener</h1>
+        <div class="urls">
+            {% for url in urls %}
+            <div class="url">
+                <h3>{{ url.name }}: <a href="{{ url.long_url }}">{{ url.short_url }}</a></h3>
+                <div class="actions">
+                    <a href="{% url 'dynamic_url' url.short_url %}" class="stat"><i class="fas fa-chart-bar"></i></a>
+                    <form method="post" action="{% url 'delete_url' url.short_url %}">
+                        {% csrf_token %}
+                        <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <a class="add-url" href="{% url 'add_url' %}">Add Url</a>
+    </div>
 </body>
 </html>
